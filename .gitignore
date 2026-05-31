@@ -4,3 +4,6 @@ match-electricals/dist/
 match-electricals/public/assets
 *.crdownload
 .DS_Store
+
+# Large video files — host these on a CDN instead
+assets/custom/videos/
