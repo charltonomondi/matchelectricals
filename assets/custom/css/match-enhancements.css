@@ -877,8 +877,28 @@ body { padding-top: var(--nav-height) !important; }
 }
 
 /* ============================================================
-   CHATBOT BUTTON POSITION (avoid overlap with scroll-top)
-   ============================================================ */
+    CHATBOT BUTTON POSITION (avoid overlap with scroll-top)
+    ============================================================ */
 .chatbot-toggler {
   bottom: 5rem !important;
+}
+
+/* ============================================================
+    TAWK.TO WIDGET VISIBILITY
+    ============================================================ */
+#tawkto-container,
+#tawkto-container iframe,
+.tawk-to-widget,
+.tawk-to-minified,
+div[class*="tawk"],
+iframe[src*="tawk.to"] {
+  z-index: 9999999 !important;
+  display: block !important;
+}
+
+/* Ensure Tawk widget is not hidden by overflow hidden on parent elements */
+body,
+#root,
+.me-main {
+  overflow: visible !important;
 }

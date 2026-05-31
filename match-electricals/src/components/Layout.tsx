@@ -10,6 +10,27 @@ export default function Layout() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [pathname])
+  
+  // Ensure Tawk widget is visible after load
+  useEffect(() => {
+    const checkTawk = () => {
+      const tawkElements = document.querySelectorAll('#tawkto-container, div[class*="tawk"], iframe[src*="tawk.to"]')
+      tawkElements.forEach(el => {
+        if (el instanceof HTMLElement) {
+          el.style.zIndex = '9999999'
+          el.style.display = 'block'
+        }
+      })
+    }
+    
+    // Check periodically for Tawk elements
+    const interval = setInterval(checkTawk, 1000)
+    
+    // Stop checking after 10 seconds
+    setTimeout(() => clearInterval(interval), 10000)
+    
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <>
