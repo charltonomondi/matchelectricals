@@ -1,0 +1,884 @@
+/* ============================================================
+   MATCH ELECTRICALS — SITE ENHANCEMENTS
+   Navbar, Dropdowns, Animations, Colors, Mobile Responsive
+   ============================================================ */
+
+/* ── Google Font upgrade ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --me-red:        #E54D42;
+  --me-red-dark:   #c0392b;
+  --me-navy:       #1a2a3a;
+  --me-navy-light: #2C3E4F;
+  --me-gold:       #f0a500;
+  --me-white:      #ffffff;
+  --me-light:      #f4f6f9;
+  --me-gray:       #6c757d;
+  --me-border:     rgba(255,255,255,0.12);
+  --nav-height:    72px;
+  --transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   GLOBAL RESETS & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ============================================================
+   NAVBAR — COMPLETE REDESIGN
+   ============================================================ */
+
+/* Remove the duplicate empty nav div */
+.fables-navigation:first-of-type:empty,
+.fables-navigation:first-of-type > .container:empty {
+  display: none;
+}
+
+.fables-navigation {
+  background: #fff !important;
+  padding: 0 !important;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  border-bottom: 3px solid var(--me-red);
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+  transition: box-shadow var(--transition);
+}
+
+.fables-navigation.scrolled {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.fables-navigation .container {
+  max-width: 1280px;
+}
+
+/* Logo */
+.fables-navigation .navbar-brand {
+  padding: 0 !important;
+  margin-right: 1.5rem;
+}
+
+.fables-logo {
+  width: clamp(180px, 30vw, 420px) !important;
+  height: auto;
+  transition: transform var(--transition);
+}
+
+.fables-logo:hover {
+  transform: scale(1.03);
+}
+
+/* Nav links */
+.fables-nav .nav-link {
+  color: #2C3E4F !important;
+  font-family: 'Rajdhani', 'Inter', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 1.2px;
+  text-transform: uppercase !important;
+  padding: 0.5rem 1rem !important;
+  position: relative;
+  transition: color var(--transition) !important;
+}
+
+.fables-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--me-red);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width var(--transition);
+}
+
+.fables-nav .nav-item:hover > .nav-link,
+.fables-nav .nav-item.active > .nav-link {
+  color: var(--me-red) !important;
+}
+
+.fables-nav .nav-item:hover > .nav-link::after,
+.fables-nav .nav-item.active > .nav-link::after {
+  width: 70%;
+}
+
+/* Remove old hover pseudo-element */
+.navbar-nav .nav-item::after { display: none !important; }
+
+/* Dropdown toggle arrow */
+.fables-nav .dropdown-toggle::after {
+  display: inline-block !important;
+  content: '';
+  border: none !important;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  margin-left: 6px;
+  vertical-align: middle;
+  transition: transform var(--transition);
+}
+
+.fables-nav .nav-item.show .dropdown-toggle::after {
+  transform: rotate(-135deg) translateY(-2px);
+}
+
+/* ── DROPDOWN MENU ── */
+.fables-nav .dropdown-menu {
+  background: var(--me-navy) !important;
+  border: none !important;
+  border-radius: 0 0 12px 12px !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45) !important;
+  padding: 0.5rem 0 !important;
+  margin-top: 0 !important;
+  min-width: 240px;
+  animation: dropdownFadeIn 0.22s ease forwards;
+  overflow: hidden;
+  border-top: 3px solid var(--me-red) !important;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fables-nav .dropdown-item {
+  color: rgba(255,255,255,0.78) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.6px;
+  text-transform: uppercase !important;
+  padding: 0.65rem 1.4rem !important;
+  border-left: 3px solid transparent;
+  transition: all var(--transition) !important;
+  background: transparent !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fables-nav .dropdown-item::before {
+  content: '›';
+  font-size: 1.1rem;
+  color: var(--me-red);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all var(--transition);
+  line-height: 1;
+}
+
+.fables-nav .dropdown-item:hover {
+  color: var(--me-white) !important;
+  background: rgba(229,77,66,0.12) !important;
+  border-left-color: var(--me-red);
+  padding-left: 1.7rem !important;
+}
+
+.fables-nav .dropdown-item:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Service Domains special item */
+.fables-nav .dropdown-item.service-domains-link {
+  background: rgba(240,165,0,0.1) !important;
+  color: var(--me-gold) !important;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 0.25rem;
+  font-weight: 700 !important;
+}
+
+.fables-nav .dropdown-item.service-domains-link:hover {
+  background: rgba(240,165,0,0.2) !important;
+  border-left-color: var(--me-gold);
+}
+
+/* Hamburger toggler */
+.navbar-toggler {
+  border: 2px solid rgba(255,255,255,0.3) !important;
+  border-radius: 8px !important;
+  padding: 0.4rem 0.7rem !important;
+  transition: all var(--transition);
+}
+
+.navbar-toggler:hover {
+  border-color: var(--me-red) !important;
+  background: rgba(229,77,66,0.1);
+}
+
+.fables-iconmenu-icon {
+  color: white !important;
+  font-size: 1.2rem !important;
+}
+
+/* Mobile nav collapse */
+@media (max-width: 767px) {
+  .fables-navigation {
+    height: auto;
+    min-height: var(--nav-height);
+  }
+
+  .fables-navigation .container { padding: 0.75rem 1rem; }
+
+  #fablesNavDropdown {
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 0.5rem 0 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .fables-nav .nav-link {
+    padding: 0.7rem 1.2rem !important;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .fables-nav .dropdown-menu {
+    background: #f4f6f9 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border-top: none !important;
+    padding: 0 !important;
+    animation: none;
+  }
+
+  .fables-nav .dropdown-item {
+    padding: 0.6rem 2rem !important;
+    font-size: 0.75rem !important;
+    color: #2C3E4F !important;
+  }
+
+  .fables-nav .dropdown-item:hover {
+    padding-left: 2.3rem !important;
+  }
+}
+
+/* ============================================================
+   PAGE BODY OFFSET (for fixed nav)
+   ============================================================ */
+body { padding-top: var(--nav-height) !important; }
+
+/* ============================================================
+   HERO VIDEO SECTION
+   ============================================================ */
+.video-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-height: 92vh;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26,42,58,0.35) 0%,
+    rgba(26,42,58,0.1) 50%,
+    rgba(26,42,58,0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* Hero text overlay */
+.hero-overlay-text {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+  width: 90%;
+  max-width: 700px;
+  animation: heroFadeUp 1s ease 0.3s both;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.hero-overlay-text h1 {
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  margin-bottom: 0.5rem;
+}
+
+.hero-overlay-text p {
+  color: rgba(255,255,255,0.85);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  margin-bottom: 1.5rem;
+}
+
+.hero-overlay-text .btn-hero {
+  background: var(--me-red);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: all var(--transition);
+  box-shadow: 0 4px 20px rgba(229,77,66,0.4);
+}
+
+.hero-overlay-text .btn-hero:hover {
+  background: var(--me-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(229,77,66,0.5);
+  color: #fff;
+}
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.section-badge {
+  display: inline-block;
+  background: rgba(229,77,66,0.1);
+  color: var(--me-red);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  border: 1px solid rgba(229,77,66,0.25);
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================
+   SERVICE CARDS
+   ============================================================ */
+.service-card-enhanced {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: all var(--transition);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--me-red), var(--me-gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.service-card-enhanced:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+}
+
+.service-card-enhanced:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card-enhanced .icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(229,77,66,0.12), rgba(229,77,66,0.06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  transition: all var(--transition);
+}
+
+.service-card-enhanced:hover .icon-wrap {
+  background: linear-gradient(135deg, var(--me-red), var(--me-red-dark));
+}
+
+.service-card-enhanced:hover .icon-wrap i {
+  color: #fff !important;
+}
+
+/* ============================================================
+   STATS / COUNTERS
+   ============================================================ */
+.stats-strip {
+  background: linear-gradient(135deg, var(--me-navy) 0%, var(--me-navy-light) 100%);
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-strip::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 120%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(229,77,66,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.stat-item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255,255,255,0.12);
+}
+
+.stat-item:last-child::after { display: none; }
+
+.stat-number {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--me-red);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.stat-label {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-match-primary {
+  background: linear-gradient(135deg, var(--me-red), var(--me-red-dark));
+  color: #fff !important;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 2rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  box-shadow: 0 4px 16px rgba(229,77,66,0.35);
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-match-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(229,77,66,0.5);
+  color: #fff !important;
+}
+
+.btn-match-outline {
+  background: transparent;
+  color: var(--me-red) !important;
+  border: 2px solid var(--me-red);
+  border-radius: 50px;
+  padding: 0.65rem 1.8rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-match-outline:hover {
+  background: var(--me-red);
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Override existing fables buttons */
+.fables-second-background-color {
+  background: linear-gradient(135deg, var(--me-red), var(--me-red-dark)) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 16px rgba(229,77,66,0.3) !important;
+  transition: all var(--transition) !important;
+}
+
+.fables-second-background-color:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(229,77,66,0.45) !important;
+}
+
+/* ============================================================
+   PROJECT / BLOG CARDS
+   ============================================================ */
+.project-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all var(--transition);
+  background: #fff;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+}
+
+.project-card .image-container {
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.project-card .image-container img {
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .image-container img {
+  transform: scale(1.06);
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.fables-testimonial-carousel-item {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(8px);
+  padding: 1.5rem !important;
+}
+
+/* ============================================================
+   CLIENT CAROUSEL CARDS
+   ============================================================ */
+.owl-carousel .card {
+  border-radius: 12px !important;
+  border: 1px solid rgba(0,0,0,0.07) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06) !important;
+  transition: all var(--transition) !important;
+  overflow: hidden;
+}
+
+.owl-carousel .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12) !important;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.fables-footer-image {
+  background: linear-gradient(135deg, var(--me-navy) 0%, #0f1e2d 100%) !important;
+}
+
+.fables-footer-links li a {
+  color: rgba(255,255,255,0.65) !important;
+  font-size: 0.85rem;
+  transition: all var(--transition);
+  display: inline-block;
+  padding: 0.2rem 0;
+  position: relative;
+}
+
+.fables-footer-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--me-red);
+  transition: width var(--transition);
+}
+
+.fables-footer-links li a:hover {
+  color: var(--me-white) !important;
+  padding-left: 6px;
+}
+
+.fables-footer-links li a:hover::after { width: 100%; }
+
+.copyright {
+  background: #0a1520 !important;
+  padding: 1.2rem 0;
+}
+
+.fables-footer-social-links li a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  color: rgba(255,255,255,0.7) !important;
+  font-size: 1rem;
+  margin: 0 4px;
+}
+
+.fables-footer-social-links li a:hover {
+  background: var(--me-red);
+  color: #fff !important;
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   PAGE HEADERS (breadcrumb sections)
+   ============================================================ */
+.fables-header,
+.fables-header1,
+.fables-header-about,
+.fables-header-fabrication,
+.fables-header-soon,
+.fables-header-gallery,
+.fables-header-manlifts,
+.fables-header-timeline,
+.fables-header-voltage,
+.fables-header-steel {
+  padding: 5rem 0 3rem !important;
+  position: relative;
+}
+
+.fables-page-title {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  border-left: 6px solid var(--me-red) !important;
+  padding-left: 1rem !important;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   SECTION DIVIDERS / BACKGROUNDS
+   ============================================================ */
+.section-light { background: var(--me-light); }
+.section-dark  { background: var(--me-navy); }
+
+/* Subtle animated gradient background for key sections */
+.fables-index-products {
+  position: relative;
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS (enhanced)
+   ============================================================ */
+.wow {
+  visibility: hidden;
+}
+
+/* Fade-in-up utility */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Pulse on icons */
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.12); }
+}
+
+.fables-second-text-color.fa-3x,
+.fables-second-text-color.fa-2x {
+  animation: iconPulse 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+#ju-loading-screen {
+  background: linear-gradient(135deg, var(--me-navy), #0f1e2d) !important;
+}
+
+.sk-double-bounce .sk-child {
+  background-color: var(--me-red) !important;
+}
+
+/* ============================================================
+   TOGETHER / CTA BLOCK
+   ============================================================ */
+.together-block .fables-main-color-transparent {
+  background: linear-gradient(135deg, rgba(26,42,58,0.92), rgba(229,77,66,0.85)) !important;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ============================================================
+   PARTNER CAROUSEL
+   ============================================================ */
+.fables-partner-carousel-img {
+  filter: grayscale(60%);
+  opacity: 0.75;
+  transition: all var(--transition);
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.fables-partner-carousel-img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.form-control:focus {
+  border-color: var(--me-red) !important;
+  box-shadow: 0 0 0 3px rgba(229,77,66,0.15) !important;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE EXTRAS
+   ============================================================ */
+@media (max-width: 991px) {
+  .hero-overlay-text h1 { font-size: 1.8rem; }
+
+  .stat-item::after { display: none; }
+
+  .together-block .fables-main-color-transparent {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .fables-page-title { font-size: 1.5rem !important; }
+
+  .video-container { max-height: 55vw; }
+
+  .hero-overlay-text { bottom: 5%; }
+
+  .hero-overlay-text h1 { font-size: 1.3rem; }
+
+  .hero-overlay-text p { display: none; }
+
+  .fables-footer-image .col-12 { margin-bottom: 1.5rem; }
+}
+
+/* ============================================================
+   OWL CAROUSEL NAV BUTTONS
+   ============================================================ */
+.owl-prev, .owl-next {
+  background: var(--me-red) !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  transition: all var(--transition) !important;
+}
+
+.owl-prev:hover, .owl-next:hover {
+  background: var(--me-red-dark) !important;
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.fables-breadcrumb .breadcrumb-item a {
+  color: var(--me-red) !important;
+  font-weight: 500;
+}
+
+.fables-breadcrumb .breadcrumb-item.active {
+  color: var(--me-gray);
+}
+
+/* ============================================================
+   SCROLL TO TOP (if present)
+   ============================================================ */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  background: var(--me-red);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--transition);
+  z-index: 999;
+  box-shadow: 0 4px 16px rgba(229,77,66,0.4);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background: var(--me-red-dark);
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   CHATBOT BUTTON POSITION (avoid overlap with scroll-top)
+   ============================================================ */
+.chatbot-toggler {
+  bottom: 5rem !important;
+}

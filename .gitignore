@@ -1,0 +1,6 @@
+node_modules/
+match-electricals/node_modules/
+match-electricals/dist/
+match-electricals/public/assets
+*.crdownload
+.DS_Store

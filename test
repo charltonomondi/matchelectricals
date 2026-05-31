@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="fables-team">
+         <h2 class="font-35 font-weight-bold text-center fables-main-text-color my-3 my-lg-5">Get to know from</h2> 
+     
+         <div class="owl-carousel owl-theme dots-0 circle-nav carousel-items-4"> 
+             <div class="card fables-team-block fables-second-hover-text-color">
+                 <div class="image-container shine-effect">
+                     <a href="#"><img class="w-100" src="assets/custom/images/match/marketing.jpg" alt="Fables Template"></a>
+                 </div>
+                 <div class="card-body">
+                     <h5><a href="#" class="font-19 semi-font fables-main-text-color team-name">Marketing Department</a></h5>
+                     <p class="font-13 fables-fifth-text-color italic my-2"></p>
+                     <ul class="nav fables-team-social-links">
+                         <li><a href="#" target="_blank"><span class="fables-iconlinkedin-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                         <li><a href="#" target="_blank"><span class="fables-icontwitter-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                         <li><a href="#" target="_blank"><span class="fables-iconinstagram-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                     </ul>
+                 </div>
+             </div>  
+             <div class="card fables-team-block fables-second-hover-text-color">
+                 <div class="image-container shine-effect">
+                     <a href="#"><img class="w-100" src="assets/custom/images/match/admin.jpg" alt="Fables Template"></a>
+                 </div>
+                 <div class="card-body">
+                     <h5><a href="#" class="font-19 semi-font fables-main-text-color team-name">Administration</a></h5>
+                     <p class="font-13 fables-fifth-text-color italic my-2"></p>
+                     <ul class="nav fables-team-social-links">
+                         <li><a href="#" target="_blank"><span class="fables-iconlinkedin-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                         <li><a href="#" target="_blank"><span class="fables-icontwitter-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                         <li><a href="#" target="_blank"><span class="fables-iconinstagram-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                     </ul>
+                 </div>
+             </div>
+
+             <div class="card fables-team-block fables-second-hover-text-color">
+                 <div class="image-container shine-effect">
+                     <a href="#"><img class="w-100" src="assets/custom/images/match/fab.jpeg" alt="Fables Template"></a>
+                 </div>
+                 <div class="card-body">
+                     <h5><a href="#" class="font-19 semi-font fables-main-text-color team-name">Fabrication Department</a></h5>
+                     <p class="font-13 fables-fifth-text-color italic my-2"></p>
+                     <ul class="nav fables-team-social-links">
+                         <li><a href="#" target="_blank"><span class="fables-iconlinkedin-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                         <li><a href="#" target="_blank"><span class="fables-icontwitter-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                         <li><a href="#" target="_blank"><span class="fables-iconinstagram-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                     </ul>
+                 </div>
+             </div>
+
+             <div class="card fables-team-block fables-second-hover-text-color">
+                 <div class="image-container shine-effect">
+                     <a href="#"><img class="w-100" src="assets/custom/images/match/wiring.jpeg" alt="Fables Template"></a>
+                 </div>
+                 <div class="card-body">
+                     <h5><a href="#" class="font-19 semi-font fables-main-text-color team-name">Technical Lead</a></h5>
+                     <p class="font-13 fables-fifth-text-color italic my-2"></p>
+                     <ul class="nav fables-team-social-links">
+                         <li><a href="#" target="_blank"><span class="fables-iconlinkedin-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                         <li><a href="#" target="_blank"><span class="fables-icontwitter-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                         <li><a href="#" target="_blank"><span class="fables-iconinstagram-icon fables-forth-text-color fables-fifth-border-color fables-team-social-icon"></span></a></li>
+                     </ul>
+                 </div>
+             </div>
+         
+           
+  </div> 
+
